@@ -1,4 +1,4 @@
-# TIME-Seq Sample Processing and Clock Analysis
+# TIME-Seq Analysis 
 
 This github contains example data and code used in Griffin et al. "TIME-Seq Enables Scalable and Inexpensive Epigenetic Age Predictions" (pre-print: https://doi.org/10.1101/2021.10.25.465725).
 
