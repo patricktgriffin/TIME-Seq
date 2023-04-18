@@ -45,4 +45,5 @@ Example barcode file provided “barcodes_pool.txt”
 
 After demultiplexing is done, the samples in each pool have a script written for mapping / methylation calling using the “writeScripts_analyzeTimeSeq.R” script. 
 This R script uses the provided info and the sample sheet and writes 1 script for each sample in the pool. 
+
 In addition to mapping, processing, and methylation calling (Bismark), the script written by “writeScripts_analyzeTimeSeq.R” also collects and print sample processing stats and overlap with target loci (provided as a .bed file).
