@@ -26,13 +26,21 @@ _Here we include the following :_
 _____________
 
 ## Usage
-The BASH script “analyzeTimeSeq.sh” has been used for sample demultiplexing and subsequently writing mapping / methylation calling scripts for each sample. 
-The submission of the script requires several inputs, described in the usage output at the top of the script. 
-```option: d     directory (required) this is the directory with the folders with fastq files for each pool
-option: s     format [ .csv ] (required) this is the name of the sample sheet. An examples samplesheet is provided: “example_demultiplexing_samplesheet.csv”
-option: p     parenthesized list (required) this is a list of the pool IDs 
-option: b     bed (required) this is a bed file that must be in the directory ../sinclair/Patrick/methylationClock/captureAnalysis 
-option: e     Either PE for paired-end sequencing or SE for single-end sequencing```
+The BASH script “analyzeTimeSeq.sh” has been used for sample demultiplexing and subsequently writing mapping / methylation calling scripts for each sample on a computing cluster like the O2 cluster at Harvard Medical School. 
+
+The submission of the BASH script requires several inputs, described in the usage output at the top of the script. 
+```
+analyzeTimeSeq.sh <options> -d <directory> -s <sample_sheet> -p <pool_IDs> -b <clock_BedFile>
+
+option: -d     directory (required) this is the directory with the folders with fastq files for each pool
+option: -s     format [ .csv ] (required) this is the name of the sample sheet. An examples samplesheet is provided: “example_demultiplexing_samplesheet.csv”
+option: -p     parenthesized list (required) this is a list of the pool IDs 
+option: -b     bed (required) this is a bed file that must be in the directory ../sinclair/Patrick/methylationClock/captureAnalysis 
+option: -e     Either PE for paired-end sequencing or SE for single-end sequencing
+```
+For each pool name that you provide as input, the script writes a barcode file that works with the sabre software.
+
+Next, sabre (https://github.com/najoshi/sabre) demultiplexes samples into individual FASTQ files based on the barcode file. 
 
 
 
