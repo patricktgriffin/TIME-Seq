@@ -8,7 +8,7 @@ TIME-Seq relies on Tn5 transposition of a specially designed barcoded adaptor se
 
 <img width="388" alt="image" src="https://user-images.githubusercontent.com/94640617/232860614-6e23660e-c1a9-4e44-a9c7-526bf1351902.png">
 
-_Here we the following :_
+_Here we include the following :_
 
 (1) The sample processing pipeline for demultiplexing TIME-Seq data from fastq, mapping data, and calling methylation. This pipeline uses a sample sheet with barcode identifyiers for each sample (example provided) to demultiplex raw fastq files based on the TIME-Seq barcode that is contained in Read 2. Once demultiplexed, samples are processed with a relatively standard pipeline using bismark to map reads (using bowtie2) and call methylation status. 
 
