@@ -45,7 +45,7 @@ analyzeTimeSeq.sh <options> -d "<directory>" -s "<sample_sheet>" -p "<pool_IDs>"
 option: -d     directory (required) this is the directory with the folders with fastq files for each pool
 option: -s     format [ .csv ] (required) this is the name of the sample sheet. An examples samplesheet is provided: “example_demultiplexing_samplesheet.csv”
 option: -p     parenthesized list (required) this is a list of the pool IDs. Separate pool IDs with a space.
-option: -b     bed (required) this is a bed file that must be in the directory ../sinclair/Patrick/methylationClock/captureAnalysis 
+option: -b     bed (required) this is a bed file that must be in this directory "../sinclair/Patrick/methylationClock/captureAnalysis" 
 option: -e     Either PE for paired-end sequencing or SE for single-end sequencing
 ```
 
