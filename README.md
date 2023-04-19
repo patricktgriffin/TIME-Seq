@@ -37,7 +37,7 @@ _____________
 ## Usage
 The BASH script “analyzeTimeSeq.sh” has been used for sample demultiplexing and subsequently writing mapping / methylation calling scripts for each sample on a computing cluster like the O2 cluster at Harvard Medical School. 
 
-Please note: this pipeline is included as it was used in the TIME-Seq manuscript. You will likely need to adapt the pipeline or individual commands to fit with the computational platform you are working on. 
+_Please note: this pipeline is included as it was used in the TIME-Seq manuscript. You will likely need to adapt the pipeline or individual commands to fit with the computational platform you are working on. _
 
 The submission of the BASH script requires several inputs that should be included in quotes, described in the usage output at the top of the script. 
 
