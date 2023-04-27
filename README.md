@@ -66,4 +66,6 @@ The genomes that we used were downloaded from iGenome (https://support.illumina.
 
 The bed files that you want to intersect for on-target analysis of hybrid capture need to be contained in the base directory in a subdirectory called captureAnalysis.
 
+The complete conda environment that I load in the pipeline is listed, which contains updated cutadpt version 3.7 and bowtie2 version 2.2.5. Loading these modules can be done independently, but you can also set up a conda environment as I do and just load them through conda.
+
 For any help or questions please contact ptgriffin {at} g.harvard.edu 
