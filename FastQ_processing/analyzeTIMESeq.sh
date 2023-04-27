@@ -1,7 +1,8 @@
 #!/bin/bash
-#SBATCH -t 0-00:59                             
-#SBATCH -p short # Partition to run
-#SBATCH --mem 2G
+#SBATCH -n 1 # Request one core
+#SBATCH -t 0-11:59                             
+#SBATCH -p short # Partition to run in
+#SBATCH --mem 30G
 
 # This bash script was used to demultiplex TIME-Seq pools then write mapping / analysis scripts
 # and submit them to the O2 computing cluster at HMS. 
@@ -13,20 +14,21 @@
 
 usage() {
   echo "" > /dev/stderr
-  echo "Usage: analyzeTimeSeq.sh <options> -d <directory> -s <sample_sheet> -p <pool_IDs> -b <clock_BedFile>"  > /dev/stderr
+  echo "Usage: analyzeTimeSeq.sh <options> -d <directory> -s <sample_sheet> -p <pool_IDs> -b <clock_BedFile> -g <genomeDir>"  > /dev/stderr
   echo "" > /dev/stderr
   echo " required arguments:" > /dev/stderr
   echo "" > /dev/stderr
   echo "  -d     directory (required) this is the directory with the folders with fastq files for each pool" > /dev/stderr
   echo "  -s     format [ .csv ] (required) this is the sample sheet" > /dev/stderr
   echo "  -p     parenthesized list (required) this is a list of the pool IDs" > /dev/stderr 
-  echo "  -b     bed (required) this is a bed file that must be in the directory ../sinclair/Patrick/methylationClock/captureAnalysis" > /dev/stderr 
+  echo "  -b     bed (required) this is a bed file that must be in the directory ${DIR}/captureAnalysis" > /dev/stderr 
   echo "  -e     Either PE for paired-end sequencing or SE for single-end sequencing" > /dev/stderr 
+  echo "  -g     directory where genome is contained" > /dev/stderr 
   echo "" > /dev/stderr
   exit 1
 }
 
-while getopts d:s:p:b:e: option
+while getopts d:s:p:b:e:g: option
 do
 case "${option}"
 in
@@ -35,26 +37,23 @@ s) SHEET=(${OPTARG});;
 p) POOLS=(${OPTARG});;   
 b) BED=(${OPTARG});;   
 e) SEQ=(${OPTARG});;   
+g) GDIR=(${OPTARG});;   
+
 esac
 done
 
-# move to source directory
+#DEMULTIPLEX
 cd ${DIR}
-# unzip fastq files (can take time)
 gunzip ./*/*fastq.gz
-# load R 
-module load gcc R
-source ~/R-VersionSelected/bin/activate
+module load gcc R/3.6.1
+source ~/R-VersionSelected/bin/activate # this is a persional R library for HMS O2 cluster
 pwd
 
-# make barcode file in the format for sabre demultiplexing
 echo "Making Barcodes File"
 for i in "${!POOLS[@]}"
 do
 	Rscript ~/scripts/makeBarcodeFiles.R ${DIR} ${SHEET} ${POOLS[i]}
 done
-
-# demultiplexing with sabre. Combining .fastq files if sequenced across lanes
 
 echo 'DEMULTIPLEXING!'
 for i in "${!POOLS[@]}"
@@ -72,21 +71,25 @@ do
 	fi 	
 done
 echo 'DONE DEMULTIPLUEXING!'
-
-# writing mapping scripts with R script that incorporates info from spreadsheet
-
 echo 'WRITIING MAPING SCRIPTS!!'
+#MAP
 cd ${DIR}
+
+
 for i in "${!POOLS[@]}"
 do
     cd ${DIR}
-           
-    Rscript ~/scripts/writeScripts_analyzeTimeSeq.R ${DIR} ${SHEET} ${POOLS[i]} ${BED[i]} ${SEQ}
+        
+    if [ $SEQ == "PE" ]; then
+    	echo "POOL,SAMPLE,READS_INITIAL,MAPPING_EFFICIENCY,MAPPING_EFFICIENCY_R1,MAPPING_EFFICIENCY_R2,PERCENT_NONCON,PERCENT_NONCON_R1,PERCENT_NONCON_R2,PERCENT_mCPG,PERCENT_mCHH,READS_MAPPED_FINAL,READS_MAPPED_FINAL_R1,READS_MAPPED_FINAL_R2,READS_ONTARG,READS_ONTARG_R1,READS_ONTARG_2,PERCENT_ONTARG,PERCENT_ONTARG_R1,PERCENT_ONTARG_R2" > runStats_${POOLS[i]}_${BED[i]}.csv
+    else
+    	echo "POOL,SAMPLE,READS_INITIAL,MAPPING_EFFICIENCY,PERCENT_NONCON,PERCENT_mCPG,PERCENT_mCHH,READS_MAPPED_FINAL,READS_ONTARG,PERCENT_ONTARG" > runStats_${POOLS[i]}_${BED[i]}.csv
+    fi
+    
+    Rscript ~/scripts/writeScripts_analyzeTimeSeq.R ${DIR} ${SHEET} ${POOLS[i]} ${BED[i]} ${SEQ} ${GDIR}
 
 done
 echo 'DONE WRITING SCRIPTS!'
-
-# change permissions and submit each script to cluster
 
 for i in "${!POOLS[@]}"
 do
