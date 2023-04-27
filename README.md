@@ -42,13 +42,14 @@ Please note: this pipeline is included as it was used in the TIME-Seq manuscript
 The submission of the BASH script requires several inputs that should be included in quotes, described in the usage output at the top of the script. 
 
 ```
-analyzeTimeSeq.sh <options> -d "<directory>" -s "<sample_sheet>" -p "<pool_IDs>" -b "<clock_BedFile>"
+analyzeTimeSeq.sh <options> -d "<directory>" -s "<sample_sheet>" -p "<pool_IDs>" -b "<clock_BedFile>" -g "<genDir>"
 
 option: -d     directory (required) this is the directory with the folders with fastq files for each pool
 option: -s     format [ .csv ] (required) this is the name of the sample sheet. An examples samplesheet is provided: “example_demultiplexing_samplesheet.csv”
 option: -p     parenthesized list (required) this is a list of the pool IDs. Separate pool IDs with a space.
 option: -b     bed (required) this is a bed file that must be in this directory "../sinclair/Patrick/methylationClock/captureAnalysis" 
 option: -e     Either PE for paired-end sequencing or SE for single-end sequencing
+option: -g     directory where genome is contained
 ```
 
 For each pool name that you provide as input, the script writes a barcode file that works with the sabre software.
@@ -61,5 +62,8 @@ This R script uses the provided info and the sample sheet and writes 1 script fo
 
 In addition to mapping, processing, and methylation calling (Bismark), the script written by “writeScripts_analyzeTimeSeq.R” also collects and print sample processing stats and overlap with target loci (provided as a .bed file).
 
+The genomes that we used were downloaded from iGenome (https://support.illumina.com/sequencing/sequencing_software/igenome.html). If using the script without altering it, you need to reference your own genome directory that contains the genome fasta that then has been BS converted (bismark_genome_preparation) and prepared into a bowtie2 index that is automatically named: "Bisulfite_Genome".
+
+The bed files that you want to intersect for on-target analysis of hybrid capture need to be contained in the base directory in a subdirectory called captureAnalysis.
 
 For any help or questions please contact ptgriffin {at} g.harvard.edu 
