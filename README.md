@@ -60,7 +60,7 @@ Example barcode file provided “barcodes_pool.txt”
 After demultiplexing is done, the samples in each pool have a script written for mapping / methylation calling using the “writeScripts_analyzeTimeSeq.R” script. 
 This R script uses the provided info and the sample sheet and writes 1 script for each sample in the pool. 
 
-Bismark must be installed and added to your $PATH as an executable software. https://github.com/FelixKrueger/Bismark 
+Bismark must be installed and added to your $PATH as an executable software. Here is the gitbuh link: https://github.com/FelixKrueger/Bismark 
 Bismark can also be loaded in a conda environment. 
 
 The complete conda environment that I load in the pipeline is listed, which contains updated cutadpt version 3.7 and bowtie2 version 2.2.5. Loading these modules can be done independently, but you can also set up a conda environment as I do and just load them through conda.
