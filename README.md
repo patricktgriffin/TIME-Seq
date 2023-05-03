@@ -31,7 +31,7 @@ This code multiplies coefficients by methylation percentages reported by Bismark
     
     - Human Blood Clock
 
-_____________
+_________________________________________________________________
 
 ## Usage
 The BASH script “analyzeTimeSeq.sh” has been used for sample demultiplexing and subsequently writing mapping / methylation calling scripts for each sample on a computing cluster like the O2 cluster at Harvard Medical School. 
@@ -59,15 +59,19 @@ Example barcode file provided “barcodes_pool.txt”
 After demultiplexing is done, the samples in each pool have a script written for mapping / methylation calling using the “writeScripts_analyzeTimeSeq.R” script. 
 This R script uses the provided info and the sample sheet and writes 1 script for each sample in the pool. 
 
-**Bismark** must be installed and added to your $PATH as an executable software. Here is the GitHub link: https://github.com/FelixKrueger/Bismark 
+[Bismark](https://github.com/FelixKrueger/Bismark) must be installed and added to your $PATH as an executable software.
 Bismark can also be loaded in a conda environment. 
 
-The complete conda environment that I load in the pipeline is listed, which contains updated **cutadpt** version 3.7 and **bowtie2** version 2.2.5. Loading these modules can be done independently, but you can also set up a conda environment as I do and just load them through conda. **samtools** is also required. 
+The complete conda environment that I load in the pipeline is listed, which contains updated [cutadpt](https://cutadapt.readthedocs.io/en/stable/) version 3.7 and [bowtie2](https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml) version 2.2.5. Loading these modules can be done independently, but you can also set up a conda environment as I do and just load them through conda. [samtools](http://www.htslib.org/download/) is also required. 
 
-In addition to mapping, processing, and methylation calling (Bismark), the script written by “writeScripts_analyzeTimeSeq.R” also collects and print sample processing stats and overlap with target loci (provided as a .bed file).
+In addition to mapping, processing, and methylation calling, the script written by “writeScripts_analyzeTimeSeq.R” also collects and print sample processing stats and overlap with target loci provided as a .bed file.
 
-The genomes that we used were downloaded from iGenome (https://support.illumina.com/sequencing/sequencing_software/igenome.html). If using the script without altering it, you need to reference your own genome directory that contains the genome fasta that then has been BS converted (bismark_genome_preparation) and prepared into a bowtie2 index that is automatically named: "Bisulfite_Genome".
+The genomes that we used were downloaded from [iGenome](https://support.illumina.com/sequencing/sequencing_software/igenome.html). If using the script without altering it, you need to reference your own genome directory that contains the genome fasta that then has been BS converted (bismark_genome_preparation) and prepared into a bowtie2 index that is automatically named: "Bisulfite_Genome".
 
 The bed files that you want to intersect for on-target analysis of hybrid capture need to be contained in the base directory in a subdirectory called captureAnalysis.
 
+_________________________________________________________________
+## Dependencies    
+    
+    
 For any help or questions please contact ptgriffin {at} g.harvard.edu 
