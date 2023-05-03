@@ -10,15 +10,15 @@ TIME-Seq relies on Tn5 transposition of a specially designed barcoded adaptor se
 
 _Here we include the following :_
 
-(1) The sample processing pipeline for demultiplexing TIME-Seq data from fastq, mapping data, and calling methylation. 
+**1.** The sample processing pipeline for demultiplexing TIME-Seq data from fastq, mapping data, and calling methylation. 
 
 This pipeline uses a sample sheet with barcode identifyiers for each sample (example provided) to demultiplex raw fastq files based on the TIME-Seq barcode that is contained in Read 2. Once demultiplexed, samples are processed with a relatively standard pipeline using bismark to map reads (using bowtie2) and call methylation status. 
 
-(2) R code that can be used to analyze TIME-Seq-based epigenetic clocks from bismark-based DNAme data. 
+**2** R code that can be used to analyze TIME-Seq-based epigenetic clocks from bismark-based DNAme data. 
 
 This code multiplies coefficients by methylation percentages reported by Bismark (0-100), sums the weighted methylation, adds the intercept and then applies model adjustments coefficients a and c.
 
-(3) Current TIME-Seq clock loci and coefficients, including:
+**3** Current TIME-Seq clock loci and coefficients, including:
 
     - Mouse Multi-tissue Clock
     
@@ -30,7 +30,7 @@ This code multiplies coefficients by methylation percentages reported by Bismark
     
     - Human Blood Clock
 
-(4) Example TIME-Seq data, samplesheet, processed data, and epigenetic age predictions.
+**4** Example TIME-Seq data, samplesheet, processed data, and epigenetic age predictions.
 
 _____________
 
@@ -54,16 +54,16 @@ option: -g     directory where genome is contained
 
 For each pool name that you provide as input, the makeBarcodeFiles.R script writes a barcode file that works with the sabre software.
 
-Next, sabre (https://github.com/najoshi/sabre) demultiplexes samples into individual FASTQ files based on the barcode file. 
+Next, **sabre** (https://github.com/najoshi/sabre) demultiplexes samples into individual FASTQ files based on the barcode file. 
 Example barcode file provided “barcodes_pool.txt”
 
 After demultiplexing is done, the samples in each pool have a script written for mapping / methylation calling using the “writeScripts_analyzeTimeSeq.R” script. 
 This R script uses the provided info and the sample sheet and writes 1 script for each sample in the pool. 
 
-Bismark must be installed and added to your $PATH as an executable software. Here is the GitHub link: https://github.com/FelixKrueger/Bismark 
+**Bismark** must be installed and added to your $PATH as an executable software. Here is the GitHub link: https://github.com/FelixKrueger/Bismark 
 Bismark can also be loaded in a conda environment. 
 
-The complete conda environment that I load in the pipeline is listed, which contains updated cutadpt version 3.7 and bowtie2 version 2.2.5. Loading these modules can be done independently, but you can also set up a conda environment as I do and just load them through conda.
+The complete conda environment that I load in the pipeline is listed, which contains updated **cutadpt** version 3.7 and **bowtie2** version 2.2.5. Loading these modules can be done independently, but you can also set up a conda environment as I do and just load them through conda.
 
 In addition to mapping, processing, and methylation calling (Bismark), the script written by “writeScripts_analyzeTimeSeq.R” also collects and print sample processing stats and overlap with target loci (provided as a .bed file).
 
