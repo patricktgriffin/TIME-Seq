@@ -14,11 +14,11 @@ _Here we include the following :_
 
 This pipeline uses a sample sheet with barcode identifyiers for each sample (example provided) to demultiplex raw fastq files based on the TIME-Seq barcode that is contained in Read 2. Once demultiplexed, samples are processed with a relatively standard pipeline using bismark to map reads (using bowtie2) and call methylation status. 
 
-**2** R code that can be used to analyze TIME-Seq-based epigenetic clocks from bismark-based DNAme data. 
+**2.** R code that can be used to analyze TIME-Seq-based epigenetic clocks from bismark-based DNAme data. 
 
 This code multiplies coefficients by methylation percentages reported by Bismark (0-100), sums the weighted methylation, adds the intercept and then applies model adjustments coefficients a and c.
 
-**3** Current TIME-Seq clock loci and coefficients, including:
+**3.** Current TIME-Seq clock loci and coefficients, including:
 
     - Mouse Multi-tissue Clock
     
@@ -30,7 +30,7 @@ This code multiplies coefficients by methylation percentages reported by Bismark
     
     - Human Blood Clock
 
-**4** Example TIME-Seq data, samplesheet, processed data, and epigenetic age predictions.
+**4.** Example TIME-Seq data, samplesheet, processed data, and epigenetic age predictions.
 
 _____________
 
