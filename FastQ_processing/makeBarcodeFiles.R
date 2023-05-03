@@ -2,7 +2,7 @@
 
 ## This script makes barcode files formatted for demultiplexing with sabre using the provided samplesheet
 
-suppressMessages(library("dplyr", lib.loc="/home/pg147/R-VersionSelected/library"))
+suppressMessages(library("dplyr"))
 
 args = commandArgs(trailingOnly=TRUE)
 dir <- args[1]
