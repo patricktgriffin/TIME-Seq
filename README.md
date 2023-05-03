@@ -6,7 +6,7 @@ This github contains example data and code used in Griffin et al. "TIME-Seq Enab
 
 TIME-Seq relies on Tn5 transposition of a specially designed barcoded adaptor set comptible with bisulfite conversion and high-efficiency hybridization enrichment. 
 
-<img width="388" alt="image" src="https://user-images.githubusercontent.com/94640617/232860614-6e23660e-c1a9-4e44-a9c7-526bf1351902.png">
+<p align="center"><img width="388" alt="image" src="https://user-images.githubusercontent.com/94640617/232860614-6e23660e-c1a9-4e44-a9c7-526bf1351902.png"><p>
 
 _Here we include the following :_
 
