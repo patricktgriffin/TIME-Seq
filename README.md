@@ -21,15 +21,15 @@ This code multiplies coefficients by methylation percentages reported by Bismark
 
 **3. Current TIME-Seq clock loci and coefficients, including:**
     
-    - Mouse Multi-tissue Clock
+* Mouse Multi-tissue Clock
    
-    - Mouse Blood Clock (version 1.1 and 1.2)
+* Mouse Blood Clock (version 1.1 and 1.2)
     
-    - Mouse Skin Clock
+* Mouse Skin Clock
     
-    - Mouse Liver Clock
+* Mouse Liver Clock
     
-    - Human Blood Clock
+* Human Blood Clock
 
 _________________________________________________________________
 
