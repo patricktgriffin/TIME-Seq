@@ -74,7 +74,7 @@ _________________________________________________________________
 ## Dependencies    
 * [R](https://www.r-project.org/)
 * [sabre](https://github.com/najoshi/sabre)
-* [Bismark](https://github.com/FelixKrueger/Bismark)
+* [bismark](https://github.com/FelixKrueger/Bismark)
 * [cutadpt](https://cutadapt.readthedocs.io/en/stable/)
 * [samtools](http://www.htslib.org/download/)
 * [fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
