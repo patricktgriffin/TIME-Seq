@@ -31,6 +31,8 @@ This code multiplies coefficients by methylation percentages reported by Bismark
     
 * Human Blood Clock
 
+* Mouse rDNA (Blood) Clock
+
 _________________________________________________________________
 
 ## Usage
