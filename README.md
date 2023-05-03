@@ -77,5 +77,6 @@ _________________________________________________________________
 * [Bismark](https://github.com/FelixKrueger/Bismark)
 * [cutadpt](https://cutadapt.readthedocs.io/en/stable/)
 * [samtools](http://www.htslib.org/download/)
+* [fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
     
 For any help or questions please contact ptgriffin {at} g.harvard.edu 
