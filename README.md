@@ -72,6 +72,10 @@ The bed files that you want to intersect for on-target analysis of hybrid captur
 
 _________________________________________________________________
 ## Dependencies    
-    
+    * [R](https://www.r-project.org/)
+    * [sabre](https://github.com/najoshi/sabre)
+    * [Bismark](https://github.com/FelixKrueger/Bismark)
+    * [cutadpt](https://cutadapt.readthedocs.io/en/stable/)
+    * [samtools](http://www.htslib.org/download/)
     
 For any help or questions please contact ptgriffin {at} g.harvard.edu 
