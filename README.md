@@ -53,7 +53,7 @@ option: -g     directory where genome is contained
 
 For each pool name that you provide as input, the makeBarcodeFiles.R script writes a barcode file that works with the sabre software.
 
-Next, **sabre** (https://github.com/najoshi/sabre) demultiplexes samples into individual FASTQ files based on the barcode file. 
+Next, [ **sabre**](https://github.com/najoshi/sabre) demultiplexes samples into individual FASTQ files based on the barcode file. 
 Example barcode file provided “barcodes_pool.txt”
 
 After demultiplexing is done, the samples in each pool have a script written for mapping / methylation calling using the “writeScripts_analyzeTimeSeq.R” script. 
