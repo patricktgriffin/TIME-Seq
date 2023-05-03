@@ -28,6 +28,7 @@ usage() {
   exit 1
 }
 
+# getting options
 while getopts d:s:p:b:e:g: option
 do
 case "${option}"
@@ -49,12 +50,15 @@ module load gcc R/3.6.1
 source ~/R-VersionSelected/bin/activate # this is a persional R library for HMS O2 cluster
 pwd
 
+# making barcode file for sabre demultiplexing from provided samplesheet
 echo "Making Barcodes File"
 for i in "${!POOLS[@]}"
 do
 	Rscript ~/scripts/makeBarcodeFiles.R ${DIR} ${SHEET} ${POOLS[i]}
 done
 
+# combining FASTQ files for pools if run across different lanes. 
+## note: we have never sequenced across more than 2 lanes but this code would need to be updates if >2 lanes per pool. 
 echo 'DEMULTIPLEXING!'
 for i in "${!POOLS[@]}"
 do
@@ -75,7 +79,7 @@ echo 'WRITIING MAPING SCRIPTS!!'
 #MAP
 cd ${DIR}
 
-
+# writing the demultiplexing and mapping scripts to be submitted on the cluster, also starting the runstats files
 for i in "${!POOLS[@]}"
 do
     cd ${DIR}
@@ -91,6 +95,7 @@ do
 done
 echo 'DONE WRITING SCRIPTS!'
 
+#submitting scripts to cluster
 for i in "${!POOLS[@]}"
 do
 	DIRLIST=(./${POOLS[i]}_*/*_analyzeTimeSeq.sh)
