@@ -35,7 +35,7 @@ This code multiplies coefficients by methylation percentages reported by Bismark
     
 **4. SampleSheets with metadata and barcodes for demultiplexing samples from raw fastq**
 
-    Raw fastq available at GEO. 
+Raw fastq available at GEO. 
 
 _________________________________________________________________
 
