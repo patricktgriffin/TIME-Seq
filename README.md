@@ -32,6 +32,10 @@ This code multiplies coefficients by methylation percentages reported by Bismark
 * Human Blood Clock
 
 * Mouse rDNA (Blood) Clock
+    
+**4. SampleSheets with metadata and barcodes for demultiplexing samples from raw fastq**
+
+    Raw fastq available at GEO. 
 
 _________________________________________________________________
 
