@@ -28,14 +28,18 @@ This code multiplies coefficients by methylation percentages reported by Bismark
 * Mouse Skin Clock
     
 * Mouse Liver Clock
-    
+      
+* Mouse White Adipose Clock
+  
+* Mouse Kidney Clock
+  
 * Human Blood Clock
 
 * Mouse rDNA (Blood) Clock
     
 **4. SampleSheets with metadata and barcodes for demultiplexing samples from raw fastq**
 
-Raw fastq available at GEO. 
+Raw fastq are available at GEO under accession GSE232346.
     
 Pair fastq with samplesheet using metadata_samplesheetInfo.csv
 
